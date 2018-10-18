@@ -6,13 +6,13 @@
 //  Copyright © 2018 Nikita Petrenkov. All rights reserved.
 //
 
-import UIKit
-import SceneKit
-import ARKit
+import UIKit      // Разные элементы на экране
+import SceneKit   // Бибилиотека для создания 3D моделей
+import ARKit      // Библиотека помещает 3D модели в дополненную реальность
 
 class ViewController: UIViewController, ARSCNViewDelegate {
 
-    @IBOutlet var sceneView: ARSCNView!
+    @IBOutlet var sceneView: ARSCNView!   // наследник UIView. Область, где происходит действие моделей
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,30 +20,30 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // Set the view's delegate
         sceneView.delegate = self
         
-        // Show statistics such as fps and timing information
+        // Показывает статистику на экране
         sceneView.showsStatistics = true
         
-        // Create a new scene
+        // Создание новой сцены
         let scene = SCNScene(named: "art.scnassets/ship.scn")!
         
-        // Set the scene to the view
+        // Присваиваем эту сцену свойству "сцена" нашего ARSCNview
         sceneView.scene = scene
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        // Create a session configuration
+        // Создает сессию, которая следить за положением телефона в ОС и положение камеры
         let configuration = ARWorldTrackingConfiguration()
 
-        // Run the view's session
+        // Запускает эту сессию
         sceneView.session.run(configuration)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        // Pause the view's session
+        // Ставит сессию на паузу
         sceneView.session.pause()
     }
 
