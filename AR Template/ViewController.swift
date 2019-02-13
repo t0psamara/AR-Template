@@ -114,7 +114,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        // Создает сессию, которая следить за положением телефона в ОС и положение камеры
+        // Создает сессию, которая следит за положением телефона в ОС и положение камеры
         let configuration = ARWorldTrackingConfiguration()
         
         // Запускает эту сессию
